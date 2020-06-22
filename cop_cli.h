@@ -40,16 +40,23 @@ typedef struct cli_branch
     } node;
 } cli_branch;
 
-typedef struct cli_entry
+typedef struct cli_ctx
 {
-    const char * prefix;
+    const cli_branch * root;
+    cli_branch * current_entry;
     const char * delimiter;
-    cli_branch * entry;
-} cli_entry;
-
+    const char * user;
+    const char * hostname;
+    struct
+    {
+        int count;
+        struct cli_node ** items;
+    } global_nodes;
+    void (*help_callback)(cli_branch * current);
+} cli_ctx;
 
 //------------
 
-void cop_cli_start(cli_entry * root);
+void cop_cli_start(cli_ctx * ctx);
 
 #endif // COP_CLI_H

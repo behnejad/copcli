@@ -1,8 +1,9 @@
 #include "cop_cli.h"
 
-void cop_cli_start(cli_entry * root)
+void cop_cli_start(cli_ctx * ctx)
 {
-    printf("%s %s ", root->prefix, root->delimiter);
-    getch();
+    printf("[%s@%s]%s", ctx->user, ctx->hostname, ctx->delimiter);
+    int i =  getch();
+    printf("%d %X [%c]", i, i, i);
     puts("\n");
 }

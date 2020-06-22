@@ -33,17 +33,18 @@ cli_branch root =
     .node = {sizeof(share_nodes), share_nodes}
 };
 
-cli_entry entry =
+cli_ctx ctx =
 {
-    .prefix = "[COP@Miktorik]",
-    .delimiter = ">",
-    .entry = &root
+    .user = "COP",
+    .hostname = "Mikortik",
+    .delimiter = " > ",
+    .root = &root,
 };
 //------------
 
 int main()
 {
     printf("Hello World!\n");
-    cop_cli_start(&entry);
+    cop_cli_start(&ctx);
     return 0;
 }
