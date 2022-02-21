@@ -21,11 +21,13 @@
 typedef struct cli_node
 {
     const char * name;
+    const char * help;
 } cli_node;
 
 typedef struct cli_branch
 {
     const char * name;
+    const char * help;
 
     struct
     {
@@ -36,7 +38,7 @@ typedef struct cli_branch
     struct
     {
         int count;
-        struct cli_node ** items;
+        cli_node ** items;
     } node;
 } cli_branch;
 
@@ -50,7 +52,7 @@ typedef struct cli_ctx
     struct
     {
         int count;
-        struct cli_node ** items;
+        cli_node ** items;
     } global_nodes;
     void (*help_callback)(cli_branch * current);
 } cli_ctx;
